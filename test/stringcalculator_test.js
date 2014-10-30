@@ -107,6 +107,17 @@ describe('stringcalculator node module.', function() {
             expect(fn).to.throw(Error);
             expect(fn).to.throw(/There are negative operands/);
             expect(fn).to.throw(/-1/);
+            
+            fn = getAddFunctionReference('-120,1');
+            expect(fn).to.throw(Error);
+            expect(fn).to.throw(/-120/);
+
+            fn = getAddFunctionReference('-130,-4');
+            expect(fn).to.throw(Error);
+            expect(fn).to.throw(/-130/);
+            //TODO: should return all negative values not just the first one
+            // expect(fn).to.throw(/-4/);
+
         });
 
         it('Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2', function() {
